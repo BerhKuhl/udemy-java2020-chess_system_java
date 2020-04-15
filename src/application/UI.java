@@ -15,6 +15,11 @@ public class UI {
 
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
+	public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
+	public static final String WHITE_BOLD = "\033[1;37m";  // WHITE
+    public static final String PURPLE_BOLD = "\033[1;35m"; // PURPLE
+    public static final String RED_BOLD = "\033[1;31m";    // RED
+	
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -99,9 +104,9 @@ public class UI {
 			System.out.print("-" + ANSI_RESET);
 		} else {
 			if (piece.getColor() == Color.WHITE) {
-				System.out.print(ANSI_WHITE + piece + ANSI_RESET);
+				System.out.print(RED_BOLD + piece + ANSI_RESET);
 			} else {
-				System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
+				System.out.print(PURPLE_BOLD + piece + ANSI_RESET);
 			}
 		}
 		System.out.print(" ");
@@ -113,12 +118,12 @@ public class UI {
 		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK)
 				.collect(Collectors.toList());
 		System.out.println("Captured pieces:");
+		System.out.print(RED_BOLD);
 		System.out.print("White: ");
-		System.out.print(ANSI_WHITE);
 		System.out.println(Arrays.toString(white.toArray()));
 		System.out.print(ANSI_RESET);
+		System.out.print(PURPLE_BOLD);
 		System.out.print("Black: ");
-		System.out.print(ANSI_YELLOW);
 		System.out.println(Arrays.toString(black.toArray()));
 		System.out.print(ANSI_RESET);
 	}
